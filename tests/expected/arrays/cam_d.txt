@@ -1,0 +1,4 @@
+# cam_d
+# shape (), dtype float64, range [3, 3]
+#
+3.0

@@ -1,0 +1,4 @@
+# cam_u
+# shape (3,), dtype float64, range [0, 1]
+#
+[1. 0. 0.]

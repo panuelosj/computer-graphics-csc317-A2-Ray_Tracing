@@ -1,0 +1,4 @@
+# sp_hit
+# shape (3,), dtype bool
+#
+[ True  True False]

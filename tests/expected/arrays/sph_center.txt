@@ -1,0 +1,4 @@
+# sph_center
+# shape (3,), dtype float64, range [0, 0]
+#
+[0. 0. 0.]

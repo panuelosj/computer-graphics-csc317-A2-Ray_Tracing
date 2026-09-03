@@ -1,0 +1,4 @@
+# fh_id
+# shape (6,), dtype int64, range [-1, 2]
+#
+[ 0  0  2  2 -1  1]

@@ -1,0 +1,4 @@
+# pl_hit
+# shape (4,), dtype bool
+#
+[ True  True False False]

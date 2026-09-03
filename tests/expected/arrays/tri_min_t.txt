@@ -1,0 +1,4 @@
+# tri_min_t
+# shape (4,), dtype float64, range [1, 1]
+#
+[1. 1. 1. 1.]

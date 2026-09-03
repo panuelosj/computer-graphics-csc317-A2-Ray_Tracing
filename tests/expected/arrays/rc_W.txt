@@ -1,0 +1,4 @@
+# rc_W
+# shape (), dtype int64, range [32, 32]
+#
+32

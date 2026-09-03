@@ -1,0 +1,4 @@
+# scene_name
+# shape (), dtype <U21
+#
+sphere-and-plane.json

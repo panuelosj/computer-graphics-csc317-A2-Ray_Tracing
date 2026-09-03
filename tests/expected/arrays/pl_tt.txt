@@ -1,0 +1,4 @@
+# pl_tt
+# shape (4,), dtype float64, range [3, 3]
+#
+[ 3.  3. inf inf]

@@ -1,0 +1,4 @@
+# rc_H
+# shape (), dtype int64, range [18, 18]
+#
+18

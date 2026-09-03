@@ -1,0 +1,4 @@
+# tri_hit
+# shape (4,), dtype bool
+#
+[ True False False False]

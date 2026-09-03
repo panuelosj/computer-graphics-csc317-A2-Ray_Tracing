@@ -1,0 +1,4 @@
+# tri_tt
+# shape (4,), dtype float64, range [5, 5]
+#
+[ 5. inf inf inf]

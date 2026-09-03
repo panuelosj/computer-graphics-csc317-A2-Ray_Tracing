@@ -1,0 +1,4 @@
+# cam_eye
+# shape (3,), dtype float64, range [0, 5]
+#
+[0. 0. 5.]

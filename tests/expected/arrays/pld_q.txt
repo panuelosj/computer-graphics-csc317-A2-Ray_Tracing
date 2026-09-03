@@ -1,0 +1,5 @@
+# pld_q
+# shape (2, 3), dtype float64, range [0, 1]
+#
+[[0. 0. 0.]
+ [1. 1. 1.]]

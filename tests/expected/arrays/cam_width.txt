@@ -1,0 +1,4 @@
+# cam_width
+# shape (), dtype float64, range [1.77778, 1.77778]
+#
+1.7777777778

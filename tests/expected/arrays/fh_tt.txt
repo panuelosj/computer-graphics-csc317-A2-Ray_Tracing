@@ -1,0 +1,4 @@
+# fh_tt
+# shape (6,), dtype float64, range [1, 5]
+#
+[4.         4.         1.         5.                inf 2.22222222]

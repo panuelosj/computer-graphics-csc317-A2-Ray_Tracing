@@ -1,0 +1,4 @@
+# sph_radius
+# shape (), dtype float64, range [1, 1]
+#
+1.0

@@ -1,0 +1,4 @@
+# pl_min_t
+# shape (4,), dtype float64, range [0.5, 0.5]
+#
+[0.5 0.5 0.5 0.5]

@@ -1,0 +1,4 @@
+# sp_tt
+# shape (3,), dtype float64, range [5, 5]
+#
+[ 5.  5. inf]

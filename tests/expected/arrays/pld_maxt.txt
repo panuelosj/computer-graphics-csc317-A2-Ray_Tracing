@@ -1,0 +1,4 @@
+# pld_maxt
+# shape (2,), dtype float64, range [1, 1]
+#
+[1. 1.]
