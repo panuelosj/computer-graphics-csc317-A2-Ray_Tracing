@@ -78,6 +78,14 @@ source venv/bin/activate           # macOS / Linux
 # .\venv\Scripts\Activate.ps1      # Windows
 ```
 
+On Windows, PowerShell may refuse to run `init.ps1` or `Activate.ps1` under
+its default execution policy. If so, allow scripts for the current session
+only and try again:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
 Each assignment has its own `venv`, so activate the one belonging to the
 assignment you are working on.
 
@@ -168,13 +176,15 @@ scene is shrunk to a single 3D point $\mathbf{e} \in \mathbb{R}^3$ in space. The
 image rectangle (e.g., 640 pixels by 360 pixels) is placed so the image center
 is directly _in front_ of the
 "eye" point at a certain ["focal
-length"](https://en.wikipedia.org/wiki/Focal_length) $d$. The image of pixels is
-scaled to match the given `width` and `height` defined by the `camera`. Camera
-is equipped with a direction that moves left-right across the image
+length"](https://en.wikipedia.org/wiki/Focal_length) $d$. The width and height
+of the pixel image needs to be scaled to match the given `camera.width` and
+`camera.height`, and the pixel image coordinates to be translated such that the
+origin is at the camera center. Camera is equipped with a direction that moves
+left-right across the image
 $\mathbf{u}$, up-down $\mathbf{v}$, and from the "eye" to the image
-$-\mathbf{w}$. Keep in mind that the `width` and `height` are measure in the
-units of the _scene_, not in the number of pixels. For example, we can fit a
-1024x1024 image into a camera with width $=1$ and height $=1$.
+$-\mathbf{w}$. Keep in mind that the `camera.width` and `camera.height` are
+measure in the units of the _scene_, not in the number of pixels. For example,
+we can fit a 1024x1024 image into a camera with width $=1$ and height $=1$.
 
 **Note:** The textbook puts the pixel coordinate origin in the bottom-left, and
 uses $i$ as a column index and $j$ as a row index. In this assignment; the
@@ -373,14 +383,15 @@ At a hit point `p` on a surface with normal `n`, the
 [Blinn-Phong](https://en.wikipedia.org/wiki/Blinn–Phong_shading_model) colour is
 
 ```
-rgb = 0.1 * ka                                    # ambient
-    + Σ_lights  [ kd * I * max(0, n·l)            # diffuse  (Lambert)
-                + ks * I * max(0, n·h)^p ]        # specular (shiny highlight)
+rgb = 0.1 * ka                                           # ambient
+    + Σ_lights  [ kd * I * max(0, n·l)                   # diffuse  (Lambert)
+                + ks * I * max(0, n·h)^phong_exponent ]  # specular (shiny highlight)
 ```
 
 summed over **only the lights that are visible** from `p`. `l` is the unit
-direction to the light, `I` is the light's colour, `p` is the Phong exponent and
-`h = normalize(l - normalize(ray.direction))` is the half-vector between the
+direction to the light, `I` is the light's colour, `phong_exponent` is the
+Phong exponent and `h = normalize(l - normalize(ray.direction))` is the
+half-vector between the
 light and the viewer. A light is considered visible when a shadow ray from `p` towards
 the light (we usually offset by `epsilon` to avoid accidentally falling inside the object's 
 surface) reaches the light without crossing any solid in our scene. We call this
@@ -417,7 +428,8 @@ reflect(d, n) = d - 2 (d·n) n
 (`MAX_RECURSIVE_CALLS` in `src/raycolor.py`) so the program always
 terminates. Scenes where mirrors face each other, such as `sphere-packing`, 
 will use a lot of recursive calls. Too low of a recusive limit will reduce 
-the brightness of the inter-reflections.
+the brightness of the inter-reflections. Note that our rendering pipeline
+expects `num_recursive_calls` to be _incremented_.
 
 ### Debugging: render one shading term at a time
 
@@ -451,7 +463,7 @@ The `--stages` flag will `out/<scene>.stages/1-ambient.png` ... `5-reflection.pn
 | **diffuse** — flat, or lit from the wrong side | `n.l`, your normals, `point_light_direction` / `directional_light_direction` |
 | **specular** — no highlight, or a huge dull one | the half-vector `h`, or `phong_exponent` applied to the wrong term |
 | **shadows** — no shadows, or speckled black "acne" | the shadow ray's `epsilon`, or comparing `shadow_t` against `max_t` |
-| **reflection** — mirrors black, or the image blows up | `reflect`, the `km` weighting, or the recursion cap |
+| **reflection** — mirrors black, or the image blows up | `reflect`, the `km` weighting, the recursion cap, or the `epsilon` fudge factor on the reflected ray (too small and reflections go missing, e.g. in `sphere-packing`) |
 
 `run_tests.py` and `check_my_work.py` will also print this same suggestion next to any
 shading function that fails.
@@ -586,13 +598,13 @@ compared within tolerance for `blinn_phong_shading` and `raycolor`).
 
 | File | Marks |
 | ---- | ----: |
-| `src/sphere_intersect.py` | 14 |
 | `src/blinn_phong_shading.py` | 14 |
+| `src/raycolor.py` | 14 |
 | `src/viewing_ray.py` | 12 |
-| `src/plane_intersect.py` | 12 |
-| `src/first_hit.py` | 12 |
-| `src/raycolor.py` | 10 |
-| `src/triangle_intersect.py` | 8 |
+| `src/sphere_intersect.py` | 12 |
+| `src/triangle_intersect.py` | 12 |
+| `src/first_hit.py` | 10 |
+| `src/plane_intersect.py` | 8 |
 | `src/reflect.py` | 6 |
 | `src/point_light_direction.py` | 6 |
 | `src/directional_light_direction.py` | 6 |

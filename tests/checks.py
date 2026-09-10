@@ -201,13 +201,13 @@ def get_checks():
     """Return the ordered list of checks for this assignment."""
     return [
         Check("viewing_ray", 12, check_viewing_ray, "perspective viewing ray through a pixel"),
-        Check("sphere_intersect", 14, check_sphere_intersect, "ray-sphere intersection"),
-        Check("plane_intersect", 12, check_plane_intersect, "ray-plane intersection"),
-        Check("triangle_intersect", 8, check_triangle_intersect, "ray-triangle intersection"),
-        Check("first_hit", 12, check_first_hit, "closest hit over all objects"),
+        Check("sphere_intersect", 12, check_sphere_intersect, "ray-sphere intersection"),
+        Check("plane_intersect", 8, check_plane_intersect, "ray-plane intersection"),
+        Check("triangle_intersect", 12, check_triangle_intersect, "ray-triangle intersection"),
+        Check("first_hit", 10, check_first_hit, "closest hit over all objects"),
         Check("reflect", 6, check_reflect, "mirror reflection of a direction"),
         Check("point_light_direction", 6, check_point_light_direction, "direction to a point light"),
         Check("directional_light_direction", 6, check_directional_light_direction, "direction to a directional light"),
         Check("blinn_phong_shading", 14, check_blinn_phong_shading, "Blinn-Phong shading with shadows"),
-        Check("raycolor", 10, check_raycolor, "recursive ray colour with reflections"),
+        Check("raycolor", 14, check_raycolor, "recursive ray colour with reflections"),
     ]

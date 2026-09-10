@@ -4,7 +4,7 @@ import numpy as np
 def triangle_intersect(a, b, c, ray, min_t):
     """Intersect a triangle ``(a, b, c)`` with a ray.
 
-    Solves ``e + t*d = a + beta*(b-a) + gamma*(c-a)`` (Cramer's rule, following
+    Solves ``o + t*d = a + beta*(b-a) + gamma*(c-a)`` (Cramer's rule, following
     Marschner & Shirley). A hit requires ``beta >= 0``, ``gamma >= 0``,
     ``beta + gamma <= 1`` and ``t >= min_t``.
 
